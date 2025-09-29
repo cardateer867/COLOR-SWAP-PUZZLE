@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Swap Puzzle</title>
+    <title>Color Swap Puzzle - Fixed Version</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -3118,24 +3118,32 @@
             
             switch(key) {
                 case 'ArrowUp':
+                case 'w':
+                case 'W':
                     if (keyboardSelectedCell >= boardSize) {
                         keyboardSelectedCell -= boardSize;
                         updateKeyboardSelection();
                     }
                     break;
                 case 'ArrowDown':
+                case 's':
+                case 'S':
                     if (keyboardSelectedCell < boardSize * (boardSize - 1)) {
                         keyboardSelectedCell += boardSize;
                         updateKeyboardSelection();
                     }
                     break;
                 case 'ArrowLeft':
+                case 'a':
+                case 'A':
                     if (keyboardSelectedCell % boardSize !== 0) {
                         keyboardSelectedCell--;
                         updateKeyboardSelection();
                     }
                     break;
                 case 'ArrowRight':
+                case 'd':
+                case 'D':
                     if (keyboardSelectedCell % boardSize !== boardSize - 1) {
                         keyboardSelectedCell++;
                         updateKeyboardSelection();
@@ -3467,8 +3475,8 @@
         // Keyboard event listener
         document.addEventListener('keydown', (e) => {
             if (gameScreen.style.display === 'flex') {
-                // Prevent default for arrow keys to avoid page scrolling
-                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'Enter', 'Escape'].includes(e.key)) {
+                // Prevent default for arrow keys and WASD to avoid page scrolling
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'W', 'a', 'A', 's', 'S', 'd', 'D', ' ', 'Enter', 'Escape'].includes(e.key)) {
                     e.preventDefault();
                 }
                 handleKeyboardInput(e.key);
